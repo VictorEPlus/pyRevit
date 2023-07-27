@@ -62,14 +62,14 @@ jobs:
         run: |
           pipenv run pyrevit set year
 
-      - name: Update Certificate
-        env:
-          CERTIFICATE: ${{ secrets.CERTIFICATE }}
-          CERTIFICATEPASSWORD: ${{ secrets.PASSWORD }}
-          CERTIFICATESHA1: "${{ secrets.CERTIFICATESHA1 }}"
-          CERTIFICATENAME: "${{ secrets.CERTIFICATENAME }}"
-        run: |
-          pipenv run pyrevit sign addcert
+#       - name: Update Certificate
+#         env:
+#           CERTIFICATE: ${{ secrets.CERTIFICATE }}
+#           CERTIFICATEPASSWORD: ${{ secrets.PASSWORD }}
+#           CERTIFICATESHA1: "${{ secrets.CERTIFICATESHA1 }}"
+#           CERTIFICATENAME: "${{ secrets.CERTIFICATENAME }}"
+#         run: |
+#           pipenv run pyrevit sign addcert
 
       # WIP only
       - name: Update Build Info (WIP)
@@ -103,27 +103,27 @@ jobs:
         with:
           path: release/version
 
-      - name: Sign Products
-        env:
-          CERTIFICATE: ${{ secrets.CERTIFICATE }}
-          CERTIFICATEPASSWORD: ${{ secrets.PASSWORD }}
-          CERTIFICATESHA1: "${{ secrets.CERTIFICATESHA1 }}"
-          CERTIFICATENAME: "${{ secrets.CERTIFICATENAME }}"
-        run: |
-          pipenv run pyrevit sign products
+#       - name: Sign Products
+#         env:
+#           CERTIFICATE: ${{ secrets.CERTIFICATE }}
+#           CERTIFICATEPASSWORD: ${{ secrets.PASSWORD }}
+#           CERTIFICATESHA1: "${{ secrets.CERTIFICATESHA1 }}"
+#           CERTIFICATENAME: "${{ secrets.CERTIFICATENAME }}"
+#         run: |
+#           pipenv run pyrevit sign products
 
       - name: Build Installers
         run: |
           pipenv run pyrevit build installers
 
-      - name: Sign Installers
-        env:
-          CERTIFICATE: ${{ secrets.CERTIFICATE }}
-          CERTIFICATEPASSWORD: ${{ secrets.PASSWORD }}
-          CERTIFICATESHA1: "${{ secrets.CERTIFICATESHA1 }}"
-          CERTIFICATENAME: "${{ secrets.CERTIFICATENAME }}"
-        run: |
-          pipenv run pyrevit sign installers
+#       - name: Sign Installers
+#         env:
+#           CERTIFICATE: ${{ secrets.CERTIFICATE }}
+#           CERTIFICATEPASSWORD: ${{ secrets.PASSWORD }}
+#           CERTIFICATESHA1: "${{ secrets.CERTIFICATESHA1 }}"
+#           CERTIFICATENAME: "${{ secrets.CERTIFICATENAME }}"
+#         run: |
+#           pipenv run pyrevit sign installers
 
       # default retention period is 90 days
       # https://github.com/marketplace/actions/upload-a-build-artifact#retention-period
@@ -139,12 +139,12 @@ jobs:
             dist/pyRevit_CLI_${{ steps.installversion.outputs.content }}_admin_signed.msi
             dist/pyrevit-cli.${{ steps.installversion.outputs.content }}.nupkg
 
-      - name: Generate Release Notes (Release)
-        if: (github.base_ref == env.ReleaseBranch)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          pipenv run pyrevit report releasenotes > release_notes.md
+#       - name: Generate Release Notes (Release)
+#         if: (github.base_ref == env.ReleaseBranch)
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         run: |
+#           pipenv run pyrevit report releasenotes > release_notes.md
 
       - name: Commit & Tag Changes (Release)
         if: (github.base_ref == env.ReleaseBranch)
