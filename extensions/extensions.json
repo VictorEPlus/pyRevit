@@ -2,6 +2,20 @@
     "extensions": [
         {
             "builtin": "False",
+			"default_enabled": "True",			
+            "type": "extension",
+            "rocket_mode_compatible": "True",
+            "name": "EPlus_Test",
+            "description": "EPlus Extensions for PyRevit",
+            "author": "Victor Ortega",
+            "author_profile": "https://github.com/VictorEPlus",
+            "url": "https://github.com/VictorEPlus/PlusRevit.git",
+            "website": "https://github.com/VictorEPlus/PlusRevit",
+            "image": "",
+            "dependencies": []
+        },
+        {
+            "builtin": "False",
             "type": "extension",
             "rocket_mode_compatible": "False",
             "name": "PyRevitPlus",
